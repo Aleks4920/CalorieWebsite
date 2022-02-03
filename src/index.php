@@ -7,5 +7,12 @@
         <script type="text/javascript" src="./js/main.js"></script>
         <title>Calories</title>
     </head>
+    <body>
+        <h1>Calories</h1>
+        <p id="food">
+
+        
+
+    </body>
 
 </html>
