@@ -1,15 +1,13 @@
 @keyframes progress {
     0% { --percentage: 0; }
     100% { --percentage: var(--filled); }
-  }
-  
-  @property --percentage {
+}
+@property --percentage {
     syntax: '<number>';
     inherits: true;
     initial-value: 0;
-  }
-  
-  [role="progressbar"] {
+}
+[role="progressbar"] {
     --percentage: var(--filled);
     --primary: #369;
     --secondary: #adf;
@@ -22,9 +20,9 @@
     overflow: hidden;
     display: grid;
     place-items: center;
-  }
-  
-  [role="progressbar"]::before {
+}
+
+[role="progressbar"]::before {
     content: "";
     position: absolute;
     top: 0;
@@ -36,27 +34,16 @@
     mask-mode: alpha;
     -webkit-mask: radial-gradient(#0000 55%, #000 0);
     -webkit-mask-mode: alpha;
-  }
-  
-  [role="progressbar"]::after {
+}
+
+[role="progressbar"]::after {
     counter-reset: percentage var(--number);
     content: counter(percentage);
     font-family: Helvetica, Arial, sans-serif;
     font-size: calc(var(--size) / 5);
     color: var(--primary);
-  }
-  
-  /* demo */
-  body {
-    margin: 0;
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    background: #f0f8ff;
-  }
-  
-  
-  
+}
+
 
 
 
@@ -68,11 +55,11 @@
 	-webkit-animation: loader-5-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
 	        animation: loader-5-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
 }
-@-webkit-keyframes loader {
+@-webkit-keyframes loader-5-1 {
 	0%   { -webkit-transform: rotate(0deg); }
 	100% { -webkit-transform: rotate(360deg); }
 }
-@keyframes loader {
+@keyframes loader-5-1 {
 	0%   { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
 }
@@ -181,7 +168,6 @@
 	50%  { transform: translate3d(0, -24px, 0) scale(.5); }
 	100% { transform: translate3d(0, 0, 0) scale(1); }
 }
-
 
 /* Layout */
 *, ::after, ::before { -webkit-box-sizing: border-box; box-sizing: border-box; }
