@@ -6,7 +6,7 @@ var query = '3lb carrots'
 $.ajax({
     method: 'GET',
     url: 'https://api.calorieninjas.com/v1/nutrition?query=' + query,
-    headers: { 'X-Api-Key': process.env.APIKEY},
+    headers: { 'X-Api-Key': 'WsuXZ4DxNiOMxogK3U7xig==zR210Rbuk8WIDnJK'},
     contentType: 'application/json',
     success: function(result) {
         console.log(result);

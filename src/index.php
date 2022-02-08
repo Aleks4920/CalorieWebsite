@@ -70,10 +70,8 @@
             if ($err) {
             echo "cURL Error #:" . $err;
             } else {
-            
-            json_decode($response);
-            echo $response;
-            
+                json_decode($response);
+                echo $response;
             }
             
 
