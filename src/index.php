@@ -15,11 +15,7 @@
             
         </div>
 
-        <script>
-            $(window).on('load', function(){
-                $(".wrapper").fadeOut("slow");
-            })
-        </script>
+        
 
         
 
@@ -36,43 +32,40 @@
             <input type="text" id="foodCalories" name="foodCalories">
             <input type="submit" value="Add">
         </form>
-        <div role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="6000" style="--filled: 60; --number:1500"></div>
         
+        
+
         
         <?php
             require 'db.php';
-
-
-            function debug_to_console($data) {
-                $output = $data;
-                if (is_array($output))
-                    $output = implode(',', $output);
-            
-                echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-            }
             
             // set up & run query
-            $sql = 'SELECT userID, Calories, CalorieGoal FROM CalorieAppUsers where name = "Kyle";';
+            $sql = 'SELECT Calories, CalorieGoal FROM CalorieAppUsers where name = "Philep";';
             $cmd = $db->prepare($sql);
             $cmd->execute();
-            $results = $cmd->fetchAll();
-            debug_to_console($results);
-            foreach($results as $result){
-                foreach($result as $i){
-                    echo $i . "\n";
-                }
-                
-            }
-            // $precent = ($calories / $calorieGoal) * 100;
-            // echo $precent;
+            $results = $cmd->fetchAll(PDO::FETCH_ASSOC);
 
+
+            $calories = $results[0]['Calories'];
+            $calorieGoal = $results[0]['CalorieGoal'];
             
+
+            $precent = ($calories / $calorieGoal) * 100;
+            
+
+            echo '<div role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="6000" style="--filled: '. $precent . '; --number:'. $calories . '"></div>';
             $db = null;
         ?>
-        
 
 
         
+
+
+        <script>
+            $(window).on('load', function(){
+                $(".wrapper").fadeOut("slow");
+            })
+        </script>
 
     </body>
 
