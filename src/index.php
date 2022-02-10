@@ -59,6 +59,7 @@
                 
             }
 
+            // display error message is needed
             if(array_key_exists('msg',$_POST)){
                 $msg = $_POST['msg'];
                 echo "<p>hello</p>";

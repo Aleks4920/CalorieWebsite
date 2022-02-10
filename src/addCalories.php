@@ -9,7 +9,7 @@
         
 
         <?php
-
+            // takes user back to homepage if error occures
             function error($msg, $name){
                 echo '<input type="hidden" id="name" name="name" value="' . $name . '">';
                 echo '<input type="hidden" id="msg" name="msg" value="' . $msg . '">';
