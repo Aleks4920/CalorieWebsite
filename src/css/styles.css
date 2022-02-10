@@ -1,3 +1,4 @@
+
 @keyframes progress {
     0% { --percentage: 0; }
     100% { --percentage: var(--filled); }
@@ -238,4 +239,9 @@
 	display: block;
 	width: calc(100% / 3);
 	height: calc(100vh / 4);
+}
+#userSelect{
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }

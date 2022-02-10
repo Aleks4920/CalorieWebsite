@@ -30,7 +30,6 @@
             }elseif ($dataType == 'food'){
                 if (is_numeric($input)){
                     throw new Exception("invalid input");
-                    break;
                 }
 
                 // change string to an array
@@ -93,8 +92,8 @@
                 $sql = 'UPDATE CalorieAppUsers set Calories = Calories +' . $calories . ' where name = "' . $name . '";';
                 $cmd = $db->prepare($sql);
                 $cmd->execute();
-            } catch {
-                throw new Exception('Cant update database');
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
                 exit();
             }
             

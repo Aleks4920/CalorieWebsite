@@ -23,24 +23,36 @@
                 $(".wrapper").fadeOut("slow");
             })
         </script> 
-        <ul>
-        <?php
-            require 'db.php';
 
-            // set up & run query
-            $sql = "SELECT * FROM CalorieAppUsers";
-            $cmd = $db->prepare($sql);
-            $cmd->execute();
-            $users = $cmd->fetchAll();
+        <form method="post" action="index.php">
+            <select name="name">
+            <?php
+                require 'db.php';
 
-            foreach ($users as $user){
-                echo"<li>" . $user["name"] . "</li>";
-            }
+                // set up & run query
+                $sql = "SELECT * FROM CalorieAppUsers";
+                $cmd = $db->prepare($sql);
+                $cmd->execute();
+                $users = $cmd->fetchAll();
+
+                foreach ($users as $user){
+                    echo'<option value="'.  $user["name"] . '">' . $user["name"] . '</option>';
+                }
 
 
-            $db = null;
-        ?>
-        </ul>
+                $db = null;
+            ?>
+            
+            </select>
+            <input type="submit" name="submit" value="Choose user">
+        </form>
+
+
+        <form method="post" action="index.php">
+            <input type="text" name="name">
+            <input type="number" name="calorieGoal">
+            <input type="submit" name="submit" value="Add New User">
+        </form>
 
 
 

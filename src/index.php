@@ -30,9 +30,46 @@
 
         <!-- get the users -->
         <?php
-            // $name = $_POST['name'];
-            $name = "Philep";
+            require 'db.php';
+            
+            if (array_key_exists('submit',$_POST)){
+
+                if($_POST['submit'] == 'Add New User'){
+                    $name = $_POST['name'];
+                    $calorieGoal = $_POST['calorieGoal'];
+                    
+                    if(!is_numeric($name) ||strlen($name) >= 2 || is_numeric($calorieGoal)){
+                        // set up & run query to get users calories and calorie goal
+                        $sql = 'INSERT INTO CalorieAppUsers (name, CalorieGoal) VALUES ("' . $name . '", ' . $calorieGoal . ');';
+                        $cmd = $db->prepare($sql);
+                        $cmd->execute();
+                    }
+                }
+                
+                
+            }
+
+            
+            
+            $name = $_POST['name'];
+            
+            if(!isset($name)){
+                header('Location:userSelect.php');
+                exit();
+            }
+            
+            
+            
+            
+
+
+
+            
+            
+            //$name = "Philep";
             ?>
+            
+        <a href="userSelect.php" id="userSelect">Change User</a>
 
         <h1>Calories</h1>
             
@@ -51,8 +88,6 @@
 
         
         <?php
-        
-            require 'db.php';
             
             // set up & run query to get users calories and calorie goal
             $sql = 'SELECT Calories, CalorieGoal FROM CalorieAppUsers where name = "' . $name . '";';
