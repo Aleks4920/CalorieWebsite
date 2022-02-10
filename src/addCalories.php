@@ -14,6 +14,11 @@
             $dataType = $_POST['add'];
             $input = $_POST['foodCalories'];
             $name = $_POST['name'];
+
+            if(!isset($name)){
+                header('Location:userSelect.php');
+                exit();
+            }
             
 
             // check input to see if user is inputing a food or specific calorie amount
