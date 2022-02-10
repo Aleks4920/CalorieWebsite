@@ -59,6 +59,11 @@
                 
             }
 
+            if(array_key_exists('msg',$_POST)){
+                $msg = $_POST['msg'];
+                echo "<p>hello</p>";
+            }
+
             
             
             $name = $_POST['name'];
@@ -131,16 +136,18 @@
 
 
         <!-- a form for the user to add their calories or what they ate -->
-        <form method="post" action="addCalories.php" id="addCaloriesForm">
-            <select name="add" id="add">
-                <option value="food">Add Food</option>
-                <option value="calories">Add calorie Amount</option>
-            </select>
-            <input type="text" id="foodCalories" name="foodCalories">
-            <?php echo '<input type="hidden" id="name" name="name" value="' . $name . '">'?>
-            <input type="submit" value="Add">
-        </form>
-        
+        <div>
+            <label>Add your calories</label>
+            <form method="post" action="addCalories.php" id="addCaloriesForm">
+                <select name="add" id="add">
+                    <option value="food">Add Food</option>
+                    <option value="calories">Add calorie Amount</option>
+                </select>
+                <input type="text" id="foodCalories" name="foodCalories" required>
+                <?php echo '<input type="hidden" id="name" name="name" value="' . $name . '">'?>
+                <input type="submit" value="Add">
+            </form>
+        </div>
 
 
         
