@@ -73,16 +73,7 @@
 
         <h1>Calories</h1>
             
-        <!-- a form for the user to add their calories or what they ate -->
-        <form method="post" action="addCalories.php">
-            <select name="add" id="add">
-                <option value="food">Add Food</option>
-                <option value="calories">Add calorie Amount</option>
-            </select>
-            <input type="text" id="foodCalories" name="foodCalories">
-            <?php echo '<input type="hidden" id="name" name="name" value="' . $name . '">'?>
-            <input type="submit" value="Add">
-        </form>
+        
         
         
 
@@ -110,6 +101,16 @@
         ?>
 
 
+        <!-- a form for the user to add their calories or what they ate -->
+        <form method="post" action="addCalories.php" id="addCaloriesForm">
+            <select name="add" id="add">
+                <option value="food">Add Food</option>
+                <option value="calories">Add calorie Amount</option>
+            </select>
+            <input type="text" id="foodCalories" name="foodCalories">
+            <?php echo '<input type="hidden" id="name" name="name" value="' . $name . '">'?>
+            <input type="submit" value="Add">
+        </form>
         
 
 

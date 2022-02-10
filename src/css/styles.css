@@ -52,8 +52,9 @@
     margin: 0;
     display: grid;
     place-items: center;
-    height: 100vh;
-    background: #f0f8ff;
+	margin-left: auto;
+    margin-right: auto;
+    min-height: 70vh;
   }
   
   
@@ -244,4 +245,19 @@
 	position: absolute;
 	top: 0px;
 	left: 0px;
+}
+
+div{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+form{
+	padding: 0;
+	margin: 0;
+}
+
+#addCaloriesForm{
+	bottom: 100px;
 }

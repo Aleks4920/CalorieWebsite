@@ -23,13 +23,13 @@
                     $calories = $input;
                 }
                 else{
-                    throw new Exception("invalid input");
+                    echo "invalid input";
                     exit();
                 }
                     
             }elseif ($dataType == 'food'){
                 if (is_numeric($input)){
-                    throw new Exception("invalid input");
+                    echo "invalid input";
                 }
 
                 // change string to an array
@@ -104,7 +104,7 @@
 
 
         ?>
-
+        
         <form method="post" action="index.php" name="passName">
             <?php echo '<input type="hidden" id="name" name="name" value="' . $name . '">'?>
         </form>

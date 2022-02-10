@@ -24,36 +24,41 @@
             })
         </script> 
 
-        <form method="post" action="index.php">
-            <select name="name">
-            <?php
-                require 'db.php';
+        <h1>Welcome, whats your name?</h1>
+        <div>
+            <label>already a user</label>
+            <form method="post" action="index.php">
+                <select name="name">
+                <?php
+                    require 'db.php';
 
-                // set up & run query
-                $sql = "SELECT * FROM CalorieAppUsers";
-                $cmd = $db->prepare($sql);
-                $cmd->execute();
-                $users = $cmd->fetchAll();
+                    // set up & run query
+                    $sql = "SELECT * FROM CalorieAppUsers";
+                    $cmd = $db->prepare($sql);
+                    $cmd->execute();
+                    $users = $cmd->fetchAll();
 
-                foreach ($users as $user){
-                    echo'<option value="'.  $user["name"] . '">' . $user["name"] . '</option>';
-                }
-
-
-                $db = null;
-            ?>
-            
-            </select>
-            <input type="submit" name="submit" value="Choose user">
-        </form>
+                    foreach ($users as $user){
+                        echo'<option value="'.  $user["name"] . '">' . $user["name"] . '</option>';
+                    }
 
 
-        <form method="post" action="index.php">
-            <input type="text" name="name">
-            <input type="number" name="calorieGoal">
-            <input type="submit" name="submit" value="Add New User">
-        </form>
+                    $db = null;
+                ?>
+                
+                </select>
+                <input type="submit" name="submit" value="Choose user">
+            </form>
+        </div>
 
+        <div>
+            <label>Not a user? add yourself</label>
+            <form method="post" action="index.php">
+                <input type="text" name="name" minlength="2" placeholder="Name" required>
+                <input type="number" name="calorieGoal" minlength="3"  placeholder="Calories" required>
+                <input type="submit" name="submit" value="Add New User">
+            </form>
+        </div>
 
 
         
