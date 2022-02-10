@@ -94,7 +94,12 @@
 
                 echo $calories;
 
-                $sql = 'UPDATE CalorieAppUsers set Calories = Calories +' . $calories . ' where name = "' . $name . '";';
+                $sql = 'SELECT userID FROM CalorieAppUsers where name = "' . $name . '" ;';
+                $cmd = $db->prepare($sql);
+                $cmd->execute();
+                $id = $cmd->fetch();
+
+                $sql = 'UPDATE UsersCalories set Calories = Calories +' . $calories . ' where userID = ' . $id[0] . ';';
                 $cmd = $db->prepare($sql);
                 $cmd->execute();
             } catch (Exception $e) {

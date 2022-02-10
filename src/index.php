@@ -40,7 +40,17 @@
                     
                     if(!is_numeric($name) ||strlen($name) >= 2 || is_numeric($calorieGoal)){
                         // set up & run query to get users calories and calorie goal
-                        $sql = 'INSERT INTO CalorieAppUsers (name, CalorieGoal) VALUES ("' . $name . '", ' . $calorieGoal . ');';
+                        $sql = 'INSERT INTO CalorieAppUsers (name) VALUES ("' . $name . '");';
+                        $cmd = $db->prepare($sql);
+                        $cmd->execute();
+
+                        $sql = 'SELECT userID FROM CalorieAppUsers where name = "' . $name . '" ;';
+                        $cmd = $db->prepare($sql);
+                        $cmd->execute();
+                        $id = $cmd->fetch();
+
+
+                        $sql = 'INSERT INTO UsersCalories (userID, UsersCalories) VALUES (' . $id . ',  "' . $name . '");';
                         $cmd = $db->prepare($sql);
                         $cmd->execute();
                     }
@@ -80,8 +90,13 @@
         
         <?php
             
+            $sql = 'SELECT userID FROM CalorieAppUsers where name = "' . $name . '" ;';
+            $cmd = $db->prepare($sql);
+            $cmd->execute();
+            $id = $cmd->fetch();
+
             // set up & run query to get users calories and calorie goal
-            $sql = 'SELECT Calories, CalorieGoal FROM CalorieAppUsers where name = "' . $name . '";';
+            $sql = 'SELECT Calories, CalorieGoal FROM UsersCalories where userID =  "' . $id[0] . '";';
             $cmd = $db->prepare($sql);
             $cmd->execute();
             $results = $cmd->fetchAll(PDO::FETCH_ASSOC);
