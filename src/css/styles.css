@@ -62,7 +62,7 @@
 
    /* ************************** loader *********************** */
 
-   .loader-5 {
+.loader-5 {
 	height: 32px;
 	width: 32px;
 	-webkit-animation: loader-5-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
@@ -181,7 +181,6 @@
 	50%  { transform: translate3d(0, -24px, 0) scale(.5); }
 	100% { transform: translate3d(0, 0, 0) scale(1); }
 }
-
 
 /* Layout */
 *, ::after, ::before { -webkit-box-sizing: border-box; box-sizing: border-box; }
