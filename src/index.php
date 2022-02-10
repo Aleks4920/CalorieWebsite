@@ -50,7 +50,7 @@
                         $id = $cmd->fetch();
 
 
-                        $sql = 'INSERT INTO UsersCalories (userID, UsersCalories) VALUES (' . $id . ',  "' . $name . '");';
+                        $sql = 'INSERT INTO UsersCalories (userID, CalorieGoal) VALUES (' . $id[0] . ', ' . $calorieGoal . ');';
                         $cmd = $db->prepare($sql);
                         $cmd->execute();
                     }
@@ -96,7 +96,7 @@
             $id = $cmd->fetch();
 
             // set up & run query to get users calories and calorie goal
-            $sql = 'SELECT Calories, CalorieGoal FROM UsersCalories where userID =  "' . $id[0] . '";';
+            $sql = 'SELECT Calories, CalorieGoal, ModifiedDate FROM UsersCalories where userID =  "' . $id[0] . '";';
             $cmd = $db->prepare($sql);
             $cmd->execute();
             $results = $cmd->fetchAll(PDO::FETCH_ASSOC);
@@ -104,6 +104,20 @@
             // get values from the table returned
             $calories = $results[0]['Calories'];
             $calorieGoal = $results[0]['CalorieGoal'];
+            $lastDate = $results[0]['ModifiedDate'];
+
+
+            // reset calories on a new day
+            if (date("Y-m-d", strtotime($lastDate)) != date("Y-m-d")){
+
+                $calories = 0;
+
+                $sql = 'UPDATE UsersCalories set Calories = Calories +' . $calories . ' where userID = ' . $id[0] . ';';
+                $cmd = $db->prepare($sql);
+                $cmd->execute();
+
+            }
+            
             
             // calculate how much of the circle to fill (how close the user is to their goal)
             $precent = ($calories / $calorieGoal) * 100;
